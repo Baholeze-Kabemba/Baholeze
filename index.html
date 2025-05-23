@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Baholeze Kabemba | Website</title>
+    <link rel="icon" href="./Imgs/rocket.svg">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:wght@300;400;700|Open+Sans:wght@300;400;600">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: #343a40;
+            padding: 15px 20px;
+        }
+
+        .navbar-brand, .nav-link {
+            color: white;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover, .active {
+            color: #ffc107 !important;
+        }
+
+        /* Parallax Section */
+        #parallax {
+            background: url('Imgs/bg.png') center/cover no-repeat fixed;
+            position: relative;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        #parallax::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .parallax-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Social Icons */
+        .social-list a {
+            color: white;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+
+        .social-list a:hover {
+            color: #ffc107;
+        }
+
+        /* About Section */
+        .about-container {
+            text-align: justify;
+            padding: 40px 0;
+        }
+
+        .about-container h2 {
+            font-weight: 700;
+            color: #343a40;
+        }
+
+        .terminal-box {
+            background-color: #111;
+            color: #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+            border: 1px solid #00FF00;
+            box-shadow: 0 0 10px #00FF00;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .terminal-prompt {
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
+        }
+
+        .footer-icons a:hover {
+            color: #ffc107;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Baholeze Kabemba</a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Projects.html">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Work.html">Work Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacts">Contacts</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Parallax Section -->
+    <section id="parallax">
+        <div class="parallax-content">
+            <h1 class="fw-bold">Baholeze Kabemba</h1>
+            <h5>IT & Security Professional</h5>
+
+            <!-- Social Icons -->
+            <div class="mt-4">
+                <ul class="list-inline social-list">
+                    <li class="list-inline-item">
+                        <a href="https://linkedin.com/in/baholeze-kabemba-b00795144/" target="_blank">
+                            <i class="fab fa-linkedin fa-2x"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://github.com/Baholeze-Kabemba" target="_blank">
+                            <i class="fab fa-github fa-2x"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="mailto:contactbaholeze@gmail.com">
+                            <i class="fa fa-envelope fa-2x"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me -->
+    <section class="container about-container">
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center">
+                <img src="./Imgs/profile.jpg" class="img-fluid rounded" alt="Baholeze Portrait" width="75%">
+            </div>
+            <div class="col-md-6">
+                <div class="terminal-box p-4 rounded">
+                    <p><span class="terminal-prompt">baholeze@cybernode:~$</span> cat whoami.txt</p>
+                    <p>Hello/Bonjour! I'm Baholeze, a passionate IT & Security professional. I love Linux, ethical hacking, and securing systems. Welcome to my site!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacts" class="container text-center py-4">
+        <h4 class="fw-bold">Get In Touch</h4>
+        <p>Email me at <a href="mailto:contactbaholeze@gmail.com" class="text-dark fw-bold">contactbaholeze@gmail.com</a></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="fw-bold mb-0">All rights reserved © Baholeze Kabemba</p>
+            <div class="footer-icons mt-3">
+                <a href="https://linkedin.com/in/baholeze-kabemba-b00795144/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Baholeze-Kabemba" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:contactbaholeze@gmail.com"><i class="fa fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
