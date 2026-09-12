@@ -1,203 +1,1451 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Baholeze Kabemba | Website</title>
-    <link rel="icon" href="./Imgs/rocket.svg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baholeze Kabemba — SOC Analyst · Cybersecurity · Cloud · Infrastructure · AI</title>
+<meta name="description" content="Portfolio of Baholeze Kabemba — SOC Analyst working across cybersecurity, cloud infrastructure, automation and local AI/LLM systems.">
 
-    <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:wght@300;400;700|Open+Sans:wght@300;400;600">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Bootstrap 5 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+/* ==========================================================================
+   1. CSS VARIABLES
+   ========================================================================== */
+:root{
+  --bg: #05070a;
+  --bg-2: #070a0f;
+  --surface: #0c1016;
+  --surface-2: #10151d;
+  --surface-glass: rgba(16, 21, 29, 0.6);
 
-    <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: #333;
-            background-color: #f8f9fa;
-        }
+  --text: #eef1f5;
+  --text-muted: #8b96a6;
+  --text-faint: #5a6474;
 
-        /* Navigation */
-        .navbar {
-            background-color: #343a40;
-            padding: 15px 20px;
-        }
+  --blue: #4f8cff;
+  --blue-soft: #3b6fe0;
+  --blue-glow: rgba(79, 140, 255, 0.35);
+  --purple: #9d7bff;
+  --purple-glow: rgba(157, 123, 255, 0.28);
+  --cyan: #4fd7e0;
+  --cyan-glow: rgba(79, 215, 224, 0.25);
 
-        .navbar-brand, .nav-link {
-            color: white;
-            transition: 0.3s;
-        }
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --border-accent: rgba(79, 140, 255, 0.4);
 
-        .nav-link:hover, .active {
-            color: #ffc107 !important;
-        }
+  --shadow-card: 0 20px 60px -20px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 40px -10px var(--blue-glow);
 
-        /* Parallax Section */
-        #parallax {
-            background: url('Imgs/bg.png') center/cover no-repeat fixed;
-            position: relative;
-            height: 450px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-        }
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
 
-        #parallax::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.6);
-        }
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-fast: 0.2s var(--ease);
+  --transition-med: 0.4s var(--ease);
+  --transition-slow: 0.7s var(--ease);
 
-        .parallax-content {
-            position: relative;
-            z-index: 2;
-        }
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', monospace;
 
-        /* Social Icons */
-        .social-list a {
-            color: white;
-            margin: 0 10px;
-            transition: 0.3s;
-        }
+  --nav-h: 76px;
+  --container: 1220px;
+}
 
-        .social-list a:hover {
-            color: #ffc107;
-        }
+/* ==========================================================================
+   2. RESET
+   ========================================================================== */
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+body, h1, h2, h3, h4, p, ul, figure{ margin: 0; }
+ul{ padding: 0; list-style: none; }
+a{ color: inherit; text-decoration: none; }
+button{ font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+img, svg{ display: block; max-width: 100%; }
 
-        /* About Section */
-        .about-container {
-            text-align: justify;
-            padding: 40px 0;
-        }
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
-        .about-container h2 {
-            font-weight: 700;
-            color: #343a40;
-        }
+/* ==========================================================================
+   3. GLOBAL STYLES
+   ========================================================================== */
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
 
-        .terminal-box {
-            background-color: #111;
-            color: #00FF00;
-            font-family: 'Courier New', Courier, monospace;
-            border: 1px solid #00FF00;
-            box-shadow: 0 0 10px #00FF00;
-            font-size: 16px;
-            line-height: 1.6;
-        }
+body.no-scroll{ overflow: hidden; }
 
-        .terminal-prompt {
-            font-weight: bold;
-        }
+.container{
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 32px;
+}
 
-        /* Footer */
-        footer {
-            background-color: #343a40;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
+h1, h2, h3, h4{
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
 
-        .footer-icons a {
-            color: white;
-            margin: 0 10px;
-            font-size: 20px;
-        }
+section{ position: relative; padding: 128px 0; }
 
-        .footer-icons a:hover {
-            color: #ffc107;
-        }
-    </style>
+.section-head{
+  max-width: 720px;
+  margin-bottom: 64px;
+}
+
+.eyebrow{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 18px;
+}
+.eyebrow::before{
+  content: '';
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 12px 2px var(--blue-glow);
+  flex-shrink: 0;
+}
+
+.section-heading{
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  line-height: 1.25;
+  color: var(--text);
+}
+.section-heading .accent{ color: var(--blue); }
+
+.section-sub{
+  margin-top: 18px;
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  max-width: 620px;
+}
+
+/* Focus states */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible{
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Reveal-on-scroll base */
+.reveal{
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.reveal.is-visible{ opacity: 1; transform: translateY(0); }
+
+/* Buttons */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 26px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+  white-space: nowrap;
+}
+.btn-primary{
+  background: linear-gradient(135deg, var(--blue), var(--blue-soft));
+  color: #061020;
+  box-shadow: 0 8px 30px -8px var(--blue-glow);
+}
+.btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 14px 40px -10px var(--blue-glow); }
+.btn-ghost{
+  background: var(--surface-glass);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(12px);
+}
+.btn-ghost:hover{ border-color: var(--border-accent); transform: translateY(-2px); }
+
+/* ==========================================================================
+   4. BACKGROUND
+   ========================================================================== */
+.bg-layer{
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.bg-grid{
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+}
+.bg-glow-a{
+  position: absolute;
+  top: -10%; left: 10%;
+  width: 560px; height: 560px;
+  background: radial-gradient(circle, var(--blue-glow), transparent 70%);
+  filter: blur(40px);
+  opacity: 0.5;
+}
+.bg-glow-b{
+  position: absolute;
+  top: 30%; right: 5%;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, var(--purple-glow), transparent 70%);
+  filter: blur(50px);
+  opacity: 0.4;
+}
+.bg-glow-c{
+  position: absolute;
+  bottom: 0%; left: 40%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, var(--cyan-glow), transparent 70%);
+  filter: blur(60px);
+  opacity: 0.3;
+}
+.bg-scan{
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(255,255,255,0.008) 3px,
+    rgba(255,255,255,0.008) 4px
+  );
+}
+
+/* ==========================================================================
+   5. NAVIGATION
+   ========================================================================== */
+.navbar{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  background: rgba(5, 7, 10, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background var(--transition-med), border-color var(--transition-med);
+}
+.navbar.is-scrolled{
+  background: rgba(5, 7, 10, 0.82);
+  border-bottom-color: var(--border);
+}
+.nav-inner{
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-mark{
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--bg);
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  box-shadow: 0 0 22px -4px var(--blue-glow);
+  flex-shrink: 0;
+}
+.brand-name{
+  font-family: var(--font-display);
+  font-size: 15.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.nav-links{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-links a{
+  position: relative;
+  padding: 9px 15px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+.nav-links a:hover, .nav-links a.is-active{
+  color: var(--text);
+  background: rgba(255,255,255,0.045);
+}
+
+.nav-cta{ display: flex; align-items: center; gap: 14px; }
+.nav-cta .btn{ padding: 11px 20px; font-size: 12.5px; }
+
+.hamburger{
+  display: none;
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  align-items: center; justify-content: center;
+  border: 1px solid var(--border);
+  background: var(--surface-glass);
+}
+.hamburger-icon{
+  position: relative;
+  width: 18px; height: 12px;
+}
+.hamburger-icon span{
+  position: absolute;
+  left: 0; right: 0;
+  height: 1.6px;
+  background: var(--text);
+  transition: transform var(--transition-med), opacity var(--transition-med), top var(--transition-med);
+}
+.hamburger-icon span:nth-child(1){ top: 0; }
+.hamburger-icon span:nth-child(2){ top: 5px; }
+.hamburger-icon span:nth-child(3){ top: 10px; }
+.hamburger[aria-expanded="true"] .hamburger-icon span:nth-child(1){ top: 5px; transform: rotate(45deg); }
+.hamburger[aria-expanded="true"] .hamburger-icon span:nth-child(2){ opacity: 0; }
+.hamburger[aria-expanded="true"] .hamburger-icon span:nth-child(3){ top: 5px; transform: rotate(-45deg); }
+
+.mobile-panel{
+  /* Absolute instead of fixed: the navbar uses backdrop-filter, which can
+     otherwise create a containing block for fixed descendants on mobile. */
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  height: calc(100vh - var(--nav-h));
+  z-index: 201;
+  background: rgba(5,7,10,0.985);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 22px 22px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transform: translateY(-8px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-med), transform var(--transition-med), visibility var(--transition-med);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.mobile-panel.is-open{
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+.mobile-panel a{
+  padding: 16px 6px;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+.mobile-panel .btn{ margin-top: 20px; justify-content: center; }
+
+/* ==========================================================================
+   6. EXPERTISE
+   ========================================================================== */
+.expertise-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+.expertise-card{
+  position: relative;
+  padding: 34px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--surface), var(--surface-2));
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform var(--transition-med), border-color var(--transition-med), box-shadow var(--transition-med);
+}
+.expertise-card::before{
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--blue-glow), transparent 40%);
+  opacity: 0;
+  transition: opacity var(--transition-med);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.expertise-card:hover{
+  transform: translateY(-6px);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+.expertise-card:hover::before{ opacity: 1; }
+
+.card-icon{
+  width: 52px; height: 52px;
+  border-radius: 13px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(79, 140, 255, 0.08);
+  border: 1px solid var(--border-accent);
+  color: var(--blue);
+  margin-bottom: 22px;
+}
+.card-icon svg{ width: 24px; height: 24px; }
+
+.card-category{
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 10px;
+}
+.expertise-card h3{ font-size: 1.32rem; margin-bottom: 12px; }
+.expertise-card p{ color: var(--text-muted); font-size: 0.96rem; margin-bottom: 22px; }
+
+.tag-row{ display: flex; flex-wrap: wrap; gap: 8px; }
+.tag{
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.02);
+}
+
+/* ==========================================================================
+   7. PROJECTS
+   ========================================================================== */
+.project-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.project-card{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  text-align: left;
+  cursor: pointer;
+  transition: transform var(--transition-med), border-color var(--transition-med), box-shadow var(--transition-med);
+}
+.project-card:hover, .project-card:focus-visible{
+  transform: translateY(-6px);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-card), 0 0 34px -14px var(--blue-glow);
+}
+.project-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+.project-index{
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.project-category{
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(79, 215, 224, 0.3);
+  background: rgba(79, 215, 224, 0.06);
+}
+.project-card h3{ font-size: 1.2rem; margin-bottom: 10px; }
+.project-card p{ color: var(--text-muted); font-size: 0.93rem; flex-grow: 1; margin-bottom: 20px; }
+.project-tags{ display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
+.project-tags .tag{ font-size: 10.8px; padding: 5px 9px; }
+.project-cta{
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--blue);
+  margin-top: auto;
+}
+.project-cta svg{ width: 14px; height: 14px; transition: transform var(--transition-fast); }
+.project-card:hover .project-cta svg{ transform: translateX(4px); }
+
+.project-card.is-pending{
+  cursor: default;
+}
+.project-card.is-pending:hover{
+  transform: none;
+  border-color: var(--border);
+  box-shadow: none;
+}
+.project-card.is-pending .project-cta{ color: var(--text-faint); }
+
+/* ==========================================================================
+   8. SHARED SECTION LABEL (used by Experience & Certifications columns)
+   ========================================================================== */
+.modal-section-title{
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 14px;
+  margin-top: 30px;
+}
+
+/* ==========================================================================
+   9. PROFILE
+   ========================================================================== */
+.profile-layout{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.profile-text p{
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  margin-bottom: 18px;
+}
+.profile-text strong{ color: var(--text); font-weight: 600; }
+
+.timeline{ position: relative; padding-left: 34px; }
+.timeline::before{
+  content: '';
+  position: absolute;
+  left: 8px; top: 6px; bottom: 6px;
+  width: 1px;
+  background: linear-gradient(180deg, var(--blue), transparent);
+}
+.timeline-item{ position: relative; padding-bottom: 34px; }
+.timeline-item:last-child{ padding-bottom: 0; }
+.timeline-node{
+  position: absolute;
+  left: -34px; top: 2px;
+  width: 17px; height: 17px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--blue);
+  box-shadow: 0 0 0 4px rgba(79,140,255,0.08), 0 0 16px 0 var(--blue-glow);
+}
+.timeline-num{
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-faint);
+  margin-bottom: 4px;
+}
+.timeline-item h4{ font-size: 1.05rem; margin-bottom: 6px; }
+.timeline-item p{ color: var(--text-muted); font-size: 0.92rem; }
+
+/* ==========================================================================
+   10. EXPERIENCE & CERTIFICATIONS
+   ========================================================================== */
+.exp-layout{
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+  align-items: start;
+}
+.exp-list{ display: flex; flex-direction: column; gap: 0; }
+.exp-item{
+  padding: 26px 0;
+  border-bottom: 1px solid var(--border);
+}
+.exp-item:first-child{ padding-top: 0; }
+.exp-item:last-child{ border-bottom: none; }
+.exp-row{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.exp-role{ font-family: var(--font-display); font-size: 1.08rem; font-weight: 600; color: var(--text); }
+.exp-period{ font-family: var(--font-mono); font-size: 12px; color: var(--text-faint); white-space: nowrap; }
+.exp-org{ font-size: 0.9rem; color: var(--blue); margin-bottom: 10px; }
+.exp-item p.exp-desc{ color: var(--text-muted); font-size: 0.93rem; }
+.exp-item ul.exp-bullets{ margin: 0; padding-left: 18px; list-style: disc; }
+.exp-item ul.exp-bullets li{ color: var(--text-muted); font-size: 0.93rem; margin-bottom: 6px; }
+.exp-item ul.exp-bullets li:last-child{ margin-bottom: 0; }
+
+.cert-grid{ display: flex; flex-direction: column; gap: 14px; }
+.cert-card{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+.cert-card:hover{ border-color: var(--border-accent); transform: translateX(4px); }
+.cert-icon{
+  width: 42px; height: 42px;
+  border-radius: 11px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(157, 123, 255, 0.08);
+  border: 1px solid rgba(157, 123, 255, 0.3);
+  color: var(--purple);
+}
+.cert-icon svg{ width: 20px; height: 20px; }
+.cert-name{ font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.cert-issuer{ font-family: var(--font-mono); font-size: 11.5px; color: var(--text-faint); }
+
+/* ==========================================================================
+   11. TECHNOLOGIES
+   ========================================================================== */
+.tech-cloud{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.tech-pill{
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 11px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.tech-pill:hover{
+  transform: translateY(-3px);
+  border-color: var(--border-accent);
+  color: var(--text);
+  box-shadow: 0 10px 24px -10px var(--blue-glow);
+}
+
+/* ==========================================================================
+   12. CONTACT
+   ========================================================================== */
+.contact-panel{
+  position: relative;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-strong);
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  padding: 72px 56px;
+  text-align: center;
+  overflow: hidden;
+}
+.contact-panel::before{
+  content: '';
+  position: absolute;
+  top: -30%; left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, var(--blue-glow), transparent 65%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.contact-panel::after{
+  content: '';
+  position: absolute;
+  bottom: -40%; right: -10%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, var(--purple-glow), transparent 65%);
+  opacity: 0.4;
+  pointer-events: none;
+}
+.contact-panel .section-heading{ margin: 0 auto 18px; max-width: 560px; }
+.contact-panel p{
+  position: relative;
+  color: var(--text-muted);
+  max-width: 540px;
+  margin: 0 auto 36px;
+}
+.contact-actions{
+  position: relative;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   13. FOOTER
+   ========================================================================== */
+.footer{
+  border-top: 1px solid var(--border);
+  padding: 56px 0 40px;
+}
+.footer-inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.footer-brand{ display: flex; align-items: center; gap: 14px; }
+.footer-brand-text h4{ font-size: 0.98rem; margin-bottom: 4px; }
+.footer-brand-text p{ font-family: var(--font-mono); font-size: 11.5px; color: var(--text-faint); }
+.footer-links{ display: flex; gap: 28px; }
+.footer-links a{
+  font-size: 13.5px;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+.footer-links a:hover{ color: var(--blue); }
+.footer-bottom{
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-faint);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   14. RESPONSIVE STYLES
+   ========================================================================== */
+@media (max-width: 1024px){
+  .expertise-grid{ grid-template-columns: 1fr; }
+  .project-grid{ grid-template-columns: repeat(2, 1fr); }
+  .profile-layout, .exp-layout{ grid-template-columns: 1fr; gap: 48px; }
+  section{ padding: 96px 0; }
+}
+
+@media (max-width: 1040px){
+  .nav-links, .nav-cta .btn-primary{ display: none; }
+  .hamburger{ display: flex; }
+}
+
+@media (max-width: 768px){
+  .container{ padding: 0 22px; }
+  .project-grid{ grid-template-columns: 1fr; }
+  .contact-panel{ padding: 48px 26px; }
+  .modal{ padding: 28px; max-height: 90vh; }
+  section{ padding: 80px 0; }
+  .section-head{ margin-bottom: 42px; }
+}
+
+@media (max-width: 480px){
+  :root{ --nav-h: 68px; }
+  .nav-inner{
+    padding: 0 16px;
+    gap: 12px;
+  }
+  .brand{ gap: 8px; min-width: 0; }
+  .brand-name{
+    font-size: 13.5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .hamburger{
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+  .mobile-panel{
+    padding: 18px 20px 32px;
+  }
+
+  .section-heading{ font-size: 1.5rem; }
+  .expertise-card, .project-card{ padding: 24px; }
+  .contact-actions{ flex-direction: column; width: 100%; }
+  .contact-actions .btn{ width: 100%; justify-content: center; }
+  .footer-inner{ flex-direction: column; align-items: flex-start; }
+  .exp-row{ flex-direction: column; gap: 4px; }
+}
+</style>
 </head>
-
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-md">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">Baholeze Kabemba</a>
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <i class="fa fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./Projects.html">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./Work.html">Work Experience</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contacts">Contacts</a></li>
-                </ul>
-            </div>
-        </div>
+<!-- Decorative background -->
+<div class="bg-layer" aria-hidden="true">
+  <div class="bg-glow-a"></div>
+  <div class="bg-glow-b"></div>
+  <div class="bg-glow-c"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-scan"></div>
+</div>
+
+<!-- ============================== NAVIGATION ============================== -->
+<header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="Baholeze Kabemba — home">
+      <span class="brand-mark" aria-hidden="true">BK</span>
+      <span class="brand-name">Baholeze Kabemba</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#expertise">Expertise</a>
+      <a href="#projects">Projects</a>
+      <a href="#profile">Profile</a>
+      <a href="#experience">Experience</a>
+      <a href="#technologies">Technologies</a>
+      <a href="#contact">Contact</a>
     </nav>
 
-    <!-- Parallax Section -->
-    <section id="parallax">
-        <div class="parallax-content">
-            <h1 class="fw-bold">Baholeze Kabemba</h1>
-            <h5>IT & Security Professional</h5>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary">Contact Me</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
+        <span class="hamburger-icon"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
 
-            <!-- Social Icons -->
-            <div class="mt-4">
-                <ul class="list-inline social-list">
-                    <li class="list-inline-item">
-                        <a href="https://linkedin.com/in/baholeze-kabemba-b00795144/" target="_blank">
-                            <i class="fab fa-linkedin fa-2x"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://github.com/Baholeze-Kabemba" target="_blank">
-                            <i class="fab fa-github fa-2x"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="mailto:contactbaholeze@gmail.com">
-                            <i class="fa fa-envelope fa-2x"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+  <nav class="mobile-panel" id="mobilePanel" aria-label="Mobile">
+    <a href="#expertise">Expertise</a>
+    <a href="#projects">Projects</a>
+    <a href="#profile">Profile</a>
+    <a href="#experience">Experience</a>
+    <a href="#technologies">Technologies</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="btn btn-primary">Contact Me</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============================== EXPERTISE ============================== -->
+  <section id="expertise">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Expertise</div>
+        <h2 class="section-heading">An approach focused on <span class="accent">security, infrastructure</span> and intelligent systems.</h2>
+      </div>
+
+      <div class="expertise-grid">
+
+        <article class="expertise-card reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>
+          </div>
+          <div class="card-category">01 · Security Operations</div>
+          <h3>SOC &amp; Cybersecurity</h3>
+          <p>Security monitoring, log analysis, detection, investigation and SOC environment simulation.</p>
+          <div class="tag-row">
+            <span class="tag">SOC Operations</span>
+            <span class="tag">Security Monitoring</span>
+            <span class="tag">Log Analysis</span>
+            <span class="tag">Detection</span>
+            <span class="tag">Incident Investigation</span>
+            <span class="tag">ELK Stack</span>
+          </div>
+        </article>
+
+        <article class="expertise-card reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 17a4 4 0 010-8 5 5 0 019.6-1.5A4.5 4.5 0 0118.5 17H6z"/><path d="M9 20h6M10 20v-2M14 20v-2"/></svg>
+          </div>
+          <div class="card-category">02 · Cloud Infrastructure</div>
+          <h3>Cloud &amp; Infrastructure</h3>
+          <p>Designing and managing infrastructure environments using cloud platforms, virtualization, networking and Linux systems.</p>
+          <div class="tag-row">
+            <span class="tag">OpenStack</span>
+            <span class="tag">VMware ESXi</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Networking</span>
+            <span class="tag">Packet Tracer</span>
+            <span class="tag">GNS3</span>
+            <span class="tag">Virtual Machines</span>
+            <span class="tag">Cloud Infrastructure</span>
+          </div>
+        </article>
+
+        <article class="expertise-card reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12a8 8 0 0114-5.3M20 12a8 8 0 01-14 5.3"/><path d="M4 4v4h4M20 20v-4h-4"/></svg>
+          </div>
+          <div class="card-category">03 · Operational Efficiency</div>
+          <h3>Automation &amp; DevOps</h3>
+          <p>Automating infrastructure and operational tasks to make environments more consistent, reproducible and manageable.</p>
+          <div class="tag-row">
+            <span class="tag">Ansible</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Podman</span>
+            <span class="tag">YAML</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Infrastructure Automation</span>
+          </div>
+        </article>
+
+        <article class="expertise-card reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
+          </div>
+          <div class="card-category">04 · Intelligent Systems</div>
+          <h3>AI &amp; Local LLMs</h3>
+          <p>Exploring local artificial intelligence, large language models, RAG pipelines and AI-powered automation.</p>
+          <div class="tag-row">
+            <span class="tag">Ollama</span>
+            <span class="tag">Local LLMs</span>
+            <span class="tag">RAG</span>
+            <span class="tag">Embeddings</span>
+            <span class="tag">Vector Databases</span>
+            <span class="tag">Python</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">Prompt Engineering</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PROJECTS ============================== -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Projects</div>
+        <h2 class="section-heading">Technical environments built to <span class="accent">learn, experiment</span> and improve.</h2>
+        <p class="section-sub">Each project below is a self-contained lab or environment. Select View Project to open the full write-up.</p>
+      </div>
+
+      <div class="project-grid" id="projectGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============================== PROFILE ============================== -->
+  <section id="profile">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Profile</div>
+        <h2 class="section-heading">Understand the <span class="accent">systems</span> to secure them better.</h2>
+      </div>
+
+      <div class="profile-layout">
+        <div class="profile-text reveal">
+          <p>Baholeze Kabemba works at the intersection of <strong>cybersecurity</strong>, <strong>cloud infrastructure</strong> and <strong>artificial intelligence</strong> — approaching each discipline as part of the same underlying problem: understanding how systems actually behave.</p>
+          <p>On the security side, this means building SOC simulations, analyzing logs and practicing detection and investigation workflows. On the infrastructure side, it means designing environments across <strong>OpenStack</strong>, <strong>VMware ESXi</strong> and <strong>Linux</strong>, and automating them with tools like <strong>Ansible</strong>, <strong>Docker</strong> and <strong>Podman</strong>.</p>
+          <p>More recently, that same systems-first mindset has extended into <strong>local AI</strong> — running large language models with <strong>Ollama</strong>, building <strong>RAG</strong> pipelines, and exploring how AI can support security operations rather than replace the analyst behind them.</p>
+          <p>The throughline is practical experimentation: building real labs, breaking them, and learning from how they fail.</p>
         </div>
-    </section>
 
-    <!-- About Me -->
-    <section class="container about-container">
-        <div class="row align-items-center">
-            <div class="col-md-6 text-center">
-                <img src="./Imgs/profile.jpg" class="img-fluid rounded" alt="Baholeze Portrait" width="75%">
-            </div>
-            <div class="col-md-6">
-                <div class="terminal-box p-4 rounded">
-                    <p><span class="terminal-prompt">baholeze@cybernode:~$</span> cat whoami.txt</p>
-                    <p>Hello/Bonjour! I'm Baholeze, a passionate IT & Security professional. I love Linux, ethical hacking, and securing systems. Welcome to my site!</p>
-                </div>
-            </div>
+        <ol class="timeline reveal" aria-label="Career and skill progression">
+          <li class="timeline-item">
+            <span class="timeline-node" aria-hidden="true"></span>
+            <div class="timeline-num">01</div>
+            <h4>Security Operations</h4>
+            <p>SOC simulation, log analysis and detection workflows using the ELK Stack.</p>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-node" aria-hidden="true"></span>
+            <div class="timeline-num">02</div>
+            <h4>Cloud &amp; Infrastructure</h4>
+            <p>Private cloud, virtualization and Linux systems across OpenStack and VMware ESXi.</p>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-node" aria-hidden="true"></span>
+            <div class="timeline-num">03</div>
+            <h4>Automation</h4>
+            <p>Infrastructure-as-code and repeatable deployments with Ansible, Docker and Podman.</p>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-node" aria-hidden="true"></span>
+            <div class="timeline-num">04</div>
+            <h4>AI &amp; Intelligent Systems</h4>
+            <p>Local LLMs, RAG pipelines and AI-assisted security workflows with Ollama and Python.</p>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-node" aria-hidden="true"></span>
+            <div class="timeline-num">05</div>
+            <h4>Continuous Learning</h4>
+            <p>Ongoing certification, lab-building and hands-on experimentation across all four domains.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== EXPERIENCE & CERTIFICATIONS ============================== -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Experience &amp; Certifications</div>
+        <h2 class="section-heading">Hands-on roles and <span class="accent">validated expertise.</span></h2>
+      </div>
+
+      <div class="exp-layout">
+        <div class="reveal">
+          <div class="modal-section-title" style="margin-top:0;">Work Experience</div>
+          <div class="exp-list">
+            <article class="exp-item">
+              <div class="exp-row">
+                <span class="exp-role">Junior Security Analyst — Security Operations &amp; Incident Response</span>
+                <span class="exp-period">2026-01-12 – Present</span>
+              </div>
+              <div class="exp-org">Canadian Food Inspection Agency (CFIA/ACIA), Ottawa, ON</div>
+              <ul class="exp-bullets">
+                <li>Respond to real-time security alerts, analyze and resolve incidents before escalation</li>
+                <li>Monitor and investigate threats using Microsoft Sentinel, Defender, Entra ID and CCCS Observation Deck</li>
+                <li>Perform vulnerability assessments and implement or recommend remediation actions</li>
+                <li>Automate security tasks using PowerShell, Python and KQL</li>
+              </ul>
+            </article>
+
+            <article class="exp-item">
+              <div class="exp-row">
+                <span class="exp-role">IT Security Technician — Risk Management &amp; BCP (ITSG-33/NIST, HTRA, SA&amp;A)</span>
+                <span class="exp-period">2023-06-12 – 2026-01-12</span>
+              </div>
+              <div class="exp-org">Canadian Food Inspection Agency (CFIA/ACIA), Ottawa, ON</div>
+              <ul class="exp-bullets">
+                <li>Planned and conducted security assessments — Security Categorizations, Security Reviews, SA&amp;A, TRA (ASTRA) — and developed CONOPS</li>
+                <li>Investigated, troubleshot, resolved and documented technical issues with IT security solutions</li>
+                <li>Worked with system and business owners to implement security controls that reduce risk</li>
+                <li>Provided IT security advice and training, improving security awareness across the organization</li>
+              </ul>
+            </article>
+
+            <article class="exp-item">
+              <div class="exp-row">
+                <span class="exp-role">Service Desk Technical Analyst</span>
+                <span class="exp-period">Sep 2022 – Jun 2023</span>
+              </div>
+              <div class="exp-org">Canadian Food Inspection Agency (CFIA/ACIA), Ottawa, ON</div>
+              <ul class="exp-bullets">
+                <li>Provided technical support via phone, chat, email and ticketing system, including follow-ups</li>
+                <li>Logged, triaged, troubleshot and resolved incidents and service requests; escalated complex issues</li>
+                <li>Supported security operations including password resets, MFA administration and incident identification</li>
+              </ul>
+            </article>
+
+            <article class="exp-item">
+              <div class="exp-row">
+                <span class="exp-role">IT Technician</span>
+                <span class="exp-period">2019 – 2022</span>
+              </div>
+              <div class="exp-org">Collège La Cité, Ottawa, ON</div>
+              <ul class="exp-bullets">
+                <li>Installed, configured, maintained and repaired computers, multimedia equipment and software</li>
+                <li>Diagnosed and resolved hardware and software issues, including image deployment</li>
+                <li>Provided end-user support for Office 365, Google Apps and D2L</li>
+              </ul>
+            </article>
+          </div>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contacts" class="container text-center py-4">
-        <h4 class="fw-bold">Get In Touch</h4>
-        <p>Email me at <a href="mailto:contactbaholeze@gmail.com" class="text-dark fw-bold">contactbaholeze@gmail.com</a></p>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p class="fw-bold mb-0">All rights reserved © Baholeze Kabemba</p>
-            <div class="footer-icons mt-3">
-                <a href="https://linkedin.com/in/baholeze-kabemba-b00795144/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Baholeze-Kabemba" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="mailto:contactbaholeze@gmail.com"><i class="fa fa-envelope"></i></a>
+        <div class="reveal">
+          <div class="modal-section-title" style="margin-top:0;">Certifications</div>
+          <div class="cert-grid">
+            <div class="cert-card">
+              <span class="cert-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/></svg>
+              </span>
+              <div>
+                <div class="cert-name">Cisco Certified CyberOps Associate</div>
+                <div class="cert-issuer">Cisco</div>
+              </div>
             </div>
+
+            <div class="cert-card">
+              <span class="cert-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/></svg>
+              </span>
+              <div>
+                <div class="cert-name">Introduction to Data Science</div>
+                <div class="cert-issuer">Cisco</div>
+              </div>
+            </div>
+
+            <div class="cert-card">
+              <span class="cert-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M9 12l2 2 4-4"/></svg>
+              </span>
+              <div>
+                <div class="cert-name">CCCS 508 — Harmonized Threat and Risk Assessment (HTRA) / ITSG-33</div>
+                <div class="cert-issuer">Canadian Centre for Cyber Security</div>
+              </div>
+            </div>
+
+            <div class="cert-card">
+              <span class="cert-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M9 12l2 2 4-4"/></svg>
+              </span>
+              <div>
+                <div class="cert-name">CCCS 115 — Foundations of Cloud Security in the Government of Canada</div>
+                <div class="cert-issuer">Canadian Centre for Cyber Security</div>
+              </div>
+            </div>
+
+            <div class="cert-card">
+              <span class="cert-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 17a4 4 0 010-8 5 5 0 019.6-1.5A4.5 4.5 0 0118.5 17H6z"/></svg>
+              </span>
+              <div>
+                <div class="cert-name">Azure Fundamentals (AZ-900) — In Progress</div>
+                <div class="cert-issuer">Microsoft</div>
+              </div>
+            </div>
+
+            <div class="cert-card">
+              <span class="cert-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 17a4 4 0 010-8 5 5 0 019.6-1.5A4.5 4.5 0 0118.5 17H6z"/></svg>
+              </span>
+              <div>
+                <div class="cert-name">Security Operations Analyst (SC-200) — In Progress</div>
+                <div class="cert-issuer">Microsoft</div>
+              </div>
+            </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== TECHNOLOGIES ============================== -->
+  <section id="technologies">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">Technologies</div>
+        <h2 class="section-heading">Tools used to build, secure and <span class="accent">experiment</span> with modern systems.</h2>
+      </div>
+
+      <div class="tech-cloud reveal" id="techCloud"></div>
+    </div>
+  </section>
+
+  <!-- ============================== CONTACT ============================== -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-panel reveal">
+        <div class="eyebrow" style="justify-content:center;">Contact</div>
+        <h2 class="section-heading">Let's build more secure and intelligent environments.</h2>
+        <p>If you would like to discuss cybersecurity, infrastructure, cloud, AI, local LLMs, RAG or a technical project, feel free to get in touch.</p>
+        <div class="contact-actions">
+          <a href="mailto:contactbaholeze@gmail.com" class="btn btn-primary">Contact Me</a>
+          <a href="#projects" class="btn btn-ghost">View My Projects</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">BK</span>
+        <div class="footer-brand-text">
+          <h4>Baholeze Kabemba</h4>
+          <p>SOC Analyst · Cybersecurity · Cloud · Infrastructure · AI</p>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="https://www.linkedin.com/in/baholeze-kabemba-b00795144/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/Baholeze-Kabemba" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Baholeze Kabemba. All rights reserved.</span>
+      <span>Built with HTML, CSS &amp; JavaScript.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ========================================================================
+     NAVIGATION — active link + scroll opacity
+     ======================================================================== */
+  var navbar = document.getElementById('navbar');
+  var navLinks = document.querySelectorAll('.nav-links a, .mobile-panel a');
+  var sections = document.querySelectorAll('main section[id]');
+
+  function onScroll(){
+    navbar.classList.toggle('is-scrolled', window.scrollY > 12);
+
+    var scrollPos = window.scrollY + 140;
+    var currentId = '';
+    sections.forEach(function(sec){
+      if(scrollPos >= sec.offsetTop){ currentId = sec.id; }
+    });
+    navLinks.forEach(function(link){
+      var match = link.getAttribute('href') === '#' + currentId;
+      link.classList.toggle('is-active', match);
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ========================================================================
+     MOBILE MENU
+     ======================================================================== */
+  var hamburgerBtn = document.getElementById('hamburgerBtn');
+  var mobilePanel = document.getElementById('mobilePanel');
+
+  function closeMobileMenu(){
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    hamburgerBtn.setAttribute('aria-label', 'Open menu');
+    mobilePanel.classList.remove('is-open');
+    document.body.classList.remove('no-scroll');
+  }
+  function openMobileMenu(){
+    hamburgerBtn.setAttribute('aria-expanded', 'true');
+    hamburgerBtn.setAttribute('aria-label', 'Close menu');
+    mobilePanel.classList.add('is-open');
+    document.body.classList.add('no-scroll');
+  }
+  hamburgerBtn.addEventListener('click', function(){
+    var isOpen = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+    isOpen ? closeMobileMenu() : openMobileMenu();
+  });
+  mobilePanel.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', closeMobileMenu);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && mobilePanel.classList.contains('is-open')){ closeMobileMenu(); }
+  });
+
+  /* ========================================================================
+     PROJECT DATA
+     ======================================================================== */
+  var projects = [
+    {
+      index: '01',
+      category: 'Security Operations',
+      title: 'SOC Simulation & ELK Stack',
+      description: 'Built a SOC simulation environment to collect, centralize and analyze security events using the ELK Stack.',
+      tech: ['Elasticsearch', 'Logstash', 'Kibana', 'SOC', 'Log Analysis'],
+      pdf: 'https://drive.google.com/drive/folders/1UpVMds9U-meVDmfqSqlWBKc-PxTNg9cr?usp=sharing'
+    },
+    {
+      index: '02',
+      category: 'Cloud Infrastructure',
+      title: 'Cloud Infrastructure with OpenStack',
+      description: 'Built and explored a private cloud environment using OpenStack, virtual machines, networking and cloud resources.',
+      tech: ['OpenStack', 'Cloud', 'Networking', 'Linux', 'Virtual Machines'],
+      pdf: 'https://drive.google.com/drive/folders/1KwYgUikyH0pKufevl9HFodD6WmfET7mI?usp=sharing'
+    },
+    {
+      index: '03',
+      category: 'Automation',
+      title: 'Infrastructure Automation',
+      description: 'Automated infrastructure administration and deployment tasks using Ansible to make environments more consistent and reproducible.',
+      tech: ['Ansible', 'YAML', 'Linux', 'Automation'],
+      pdf: 'https://drive.google.com/drive/folders/1QQB2AgHFC0sQit3mz5tD8vDff6iN9K7Y?usp=sharing'
+    },
+    {
+      index: '04',
+      category: 'Containers',
+      title: 'Containerization with Docker & Podman',
+      description: 'Used container technologies to deploy, isolate and manage services in modern infrastructure environments.',
+      tech: ['Docker', 'Podman', 'Containers', 'Linux'],
+      pdf: 'https://drive.google.com/drive/folders/1XqDgQ7UgaUcWqbZTrqsawybN6grfrgGs?usp=sharing'
+    },
+    {
+      index: '05',
+      category: 'Virtualization',
+      title: 'VMware ESXi & Virtualization',
+      description: 'Created and managed virtualized environments for experimenting with different systems, infrastructure configurations and technical scenarios.',
+      tech: ['VMware ESXi', 'Virtual Machines', 'Infrastructure', 'Virtualization'],
+      pdf: 'https://drive.google.com/drive/folders/15p9Ykw3VDaOUETxvQomEvkqZHAzzfyX-?usp=sharing'
+    },
+    {
+      index: '06',
+      category: 'Systems',
+      title: 'Systems & Mobile Devices',
+      description: 'Worked with Linux, Windows and mobile environments with a focus on system behavior, administration and security.',
+      tech: ['Linux', 'Windows', 'Mobile', 'Systems'],
+      pdf: 'https://drive.google.com/drive/folders/1XSzUnIuqWIifwzMPM15xHGoc-T7JCZk8?usp=sharing'
+    },
+    {
+      index: '07',
+      category: 'Artificial Intelligence',
+      title: 'Local LLM Lab with Ollama',
+      description: 'Built and experimented with a local AI environment using Ollama to run large language models locally without relying entirely on external cloud APIs.',
+      tech: ['Ollama', 'Local LLMs', 'Python', 'REST API', 'Linux', 'AI'],
+      pdf: 'https://drive.google.com/drive/folders/11ZsNleBZN9sqVopkfrU3xDppDIPnngxO?usp=sharing'
+    },
+    {
+      index: '08',
+      category: 'AI / RAG',
+      title: 'RAG Knowledge Assistant',
+      description: 'Built a Retrieval-Augmented Generation concept that allows a local LLM to retrieve relevant information from a private knowledge base before generating an answer.',
+      tech: ['RAG', 'Ollama', 'Embeddings', 'Vector Database', 'Python', 'LLM'],
+      pdf: 'https://drive.google.com/drive/folders/13EHhNII5pMzqBU2uKU82TexBP2VMjKYT?usp=sharing'
+    },
+    {
+      index: '09',
+      category: 'Cybersecurity + AI',
+      title: 'Security AI Copilot',
+      description: 'Explored how local LLMs and RAG can assist security operations by summarizing events, analyzing logs and retrieving relevant security knowledge.',
+      tech: ['Ollama', 'Local LLM', 'RAG', 'Python', 'Cybersecurity', 'SOC'],
+      pdf: 'https://drive.google.com/drive/folders/1tXocZLnSfWKRl9JTds1YFLVZOnzpC0qI?usp=sharing'
+    },
+    {
+      index: '10',
+      category: 'AI / Automation',
+      title: 'LLM Automation & AI APIs',
+      description: 'Experimented with integrating local language models into Python applications, automation workflows and APIs.',
+      tech: ['Python', 'Ollama', 'REST API', 'LLM', 'Automation', 'AI'],
+      pdf: 'https://drive.google.com/drive/folders/1H-CIuc1OXNme5q6UjzetMVO1VhqhBgqr?usp=sharing'
+    },
+    {
+      index: '11',
+      category: 'Networking',
+      title: 'Network Design & Simulation Labs',
+      description: 'Designed and tested routing, switching and network security scenarios in simulated environments using Cisco Packet Tracer and GNS3.',
+      tech: ['Packet Tracer', 'GNS3', 'Routing & Switching', 'Networking', 'VLANs', 'Network Security'],
+      pdf: 'https://drive.google.com/drive/folders/1aYt8KNEjtXDV5l4VmFE4SLHe6sHABXNS?usp=sharing'
+    },
+    {
+      index: '12',
+      category: 'System Hardening',
+      title: 'Windows 11 CIS Benchmark Hardening',
+      description: 'Designed and developed a read-only auditing tool to verify Windows 11 security configurations against the CIS Microsoft Windows 11 Enterprise Benchmark.',
+      tech: ['Windows 11', 'CIS Benchmark', 'Compliance Auditing', 'PowerShell', 'System Hardening'],
+      pdf: 'https://drive.google.com/drive/folders/1aYkdxGLSpI8ZOp759sUG49v6mUOHdC9E?usp=sharing'
+    }
+  ];
+
+  var techList = [
+    'Linux','Windows','ELK Stack','Elasticsearch','Logstash','Kibana','OpenStack','Ansible',
+    'Docker','Podman','VMware ESXi','Virtualization','Cloud','SOC','Cybersecurity','Networking',
+    'Packet Tracer','GNS3','Routing & Switching','VLANs','Mobile Devices','Python','AI',
+    'Artificial Intelligence','LLM','Local LLM','Ollama','RAG',
+    'Embeddings','Vector Databases','Prompt Engineering','REST APIs','Machine Learning',
+    'System Hardening','CIS Benchmark','Compliance Auditing','PowerShell'
+  ];
+
+  /* ========================================================================
+     RENDER — project cards
+     Each card links to that project's write-up. The "pdf" field on each
+     project below accepts either:
+       - a relative path to a file you upload alongside index.html
+         e.g. 'projects/01-soc-simulation-elk-stack.pdf'
+       - a full external URL (Google Drive, Dropbox, GitHub, a hosted PDF, etc.)
+         e.g. 'https://drive.google.com/file/d/XXXXXXXX/view'
+     Leave a project's "pdf" as an empty string ('') to show it as
+     "Coming soon" instead of a broken link until the document is ready.
+     ======================================================================== */
+  var grid = document.getElementById('projectGrid');
+  var arrowSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+  projects.forEach(function(p){
+    var hasLink = !!(p.pdf && p.pdf.trim());
+    var card = document.createElement(hasLink ? 'a' : 'div');
+    card.className = 'project-card reveal';
+
+    if(hasLink){
+      card.href = p.pdf;
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+      card.setAttribute('aria-label', 'View project details for ' + p.title + ' (opens in a new tab)');
+    } else {
+      card.setAttribute('aria-label', p.title + ' — write-up coming soon');
+    }
+
+    var tagsHtml = p.tech.slice(0, 4).map(function(t){ return '<span class="tag">' + t + '</span>'; }).join('');
+    var ctaLabel = 'View Project ' + arrowSvg;
+
+    card.innerHTML =
+      '<div class="project-top">' +
+        '<span class="project-index">' + p.index + '</span>' +
+        '<span class="project-category">' + p.category + '</span>' +
+      '</div>' +
+      '<h3>' + p.title + '</h3>' +
+      '<p>' + p.description + '</p>' +
+      '<div class="project-tags">' + tagsHtml + '</div>' +
+      '<span class="project-cta">' + ctaLabel + '</span>';
+
+    grid.appendChild(card);
+  });
+
+  /* ========================================================================
+     RENDER — technology pills
+     ======================================================================== */
+  var techCloud = document.getElementById('techCloud');
+  techList.forEach(function(t){
+    var pill = document.createElement('span');
+    pill.className = 'tech-pill';
+    pill.textContent = t;
+    techCloud.appendChild(pill);
+  });
+
+  /* ========================================================================
+     INTERSECTION OBSERVER — scroll reveal
+     (runs after dynamic content above is in the DOM, so project cards and
+     technology pills — which also carry the .reveal class — are included)
+     ======================================================================== */
+  if('IntersectionObserver' in window && !reducedMotion){
+    var revealItems = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    revealItems.forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  /* ========================================================================
+     CURRENT YEAR
+     ======================================================================== */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+})();
+</script>
 
 </body>
 </html>
